@@ -23,4 +23,6 @@ jobs:
       environment_name: ${{ steps.assign_environment.outputs.environment_name  }}
     steps:
       - id: assign_environment
-        run: echo "environment_name =${{secrets.ENVIRONMENT_NAME}}AA" >> $GITHUB_OUTPUT
+        run: |
+           echo Name of ${{secrets.ENVIRONMENT_NAME}}
+           echo "environment_name =${{secrets.ENVIRONMENT_NAME}}" >> $GITHUB_OUTPUT
