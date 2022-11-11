@@ -27,5 +27,8 @@ runs:
         password: ${{ inputs.docker_token }}   
     - name: Build the Docker image
       run: docker build . --file ${{ inputs.docker_file }}  --tag ${{ inputs.docker_tag_name }}
+      shell: bash
     - name: Publish dockerimage to docker hub
       run: docker push ${{ inputs.docker_tag_name }}
+      shell: bash
+      
