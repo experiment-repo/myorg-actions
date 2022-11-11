@@ -1,0 +1,31 @@
+name: 'Publish to Docker'
+description: 'Publish to Docker'
+inputs:
+  docker_user_name:  
+    description: 'User name of docker hub'
+    required: true
+  docker_token:  
+    description: 'Token for docker hub'
+    required: true
+  docker_file:  
+    description: 'Docker file path'
+    required: true
+    default: 'Dockerfile'
+  docker_tag_name:  
+    description: 'Docker tag name'
+    required: true      
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Docker Buildx
+      id: buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to DockerHub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ inputs.docker_user_name }}
+        password: ${{ inputs.docker_token }}   
+    - name: Build the Docker image
+      run: docker build . --file ${{ inputs.docker_file }}  --tag ${{ inputs.docker_tag_name }}
+    - name: Publish dockerimage to docker hub
+      run: docker push ${{ inputs.docker_tag_name }}
