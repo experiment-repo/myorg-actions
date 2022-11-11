@@ -24,5 +24,5 @@ jobs:
     steps:
       - id: assign_environment
         run: |
-           echo Name of ${{secrets.ENVIRONMENT_NAME}}
+           echo Name of ${{secrets.DOCKERHUB_USERNAME}}
            echo "environment_name =${{secrets.ENVIRONMENT_NAME}}" >> $GITHUB_OUTPUT
