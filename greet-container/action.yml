@@ -1,0 +1,12 @@
+name: 'Greet the calling branch'
+description: 'Say welcome'
+inputs:
+  branch_name:  
+    description: 'Branch Name'
+    required: true
+   
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.branch_name }}
