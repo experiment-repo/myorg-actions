@@ -4,11 +4,16 @@ inputs:
   branch_name:  
     description: 'Branch Name'
     required: true
-   
+outputs:
+  action_type: 
+    description: 'Executed action type'
 runs:
   using: "composite"
   steps:
     - name: Say welcome
       run: echo Welcome ${{ inputs.branch_name }}
+      shell: bash
+    - name: Say welcome  
+      run: echo "action_type=Composite" >> $GITHUB_OUTPUT
       shell: bash
       

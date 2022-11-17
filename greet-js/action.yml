@@ -6,9 +6,7 @@ inputs:
     required: true
 outputs:
   action_type: 
-    description: 'Executed action type'   
+    description: 'Executed action type'
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.branch_name }}
+  using: 'node16'
+  main: 'index.js'
