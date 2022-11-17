@@ -9,6 +9,6 @@ runs:
   using: "composite"
   steps:
     - name: Say welcome
-      run: Welcome ${{ inputs.branch_name }}
+      run: echo Welcome ${{ inputs.branch_name }}
       shell: bash
       
