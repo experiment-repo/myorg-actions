@@ -1,0 +1,14 @@
+name: 'Greet the calling branch'
+description: 'Say welcome'
+inputs:
+  branch_name:  
+    description: 'Branch Name'
+    required: true
+   
+runs:
+  using: "composite"
+  steps:
+    - name: Say welcome
+      run: Welcome ${{ inputs.branch_name }}
+      shell: bash
+      
