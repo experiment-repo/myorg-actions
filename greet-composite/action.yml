@@ -7,13 +7,14 @@ inputs:
 outputs:
   action_type: 
     description: 'Executed action type'
+    value: ${{ steps.setActionType.outputs.action_type }}
 runs:
   using: "composite"
   steps:
     - name: Say welcome
       run: echo Welcome ${{ inputs.branch_name }}
       shell: bash
-    - name: Say welcome  
+    - id: setActionType  
       run: echo "action_type=Composite" >> $GITHUB_OUTPUT
       shell: bash
       
